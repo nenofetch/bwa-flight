@@ -1,9 +1,6 @@
-import { Button } from '@/components/ui/button';
-import { Input } from '@/components/ui/input';
+
 import { Metadata } from 'next';
 import React, { FC } from 'react';
-import { ActionResult, handleSignIn } from './form/action';
-import { useFormState } from 'react-dom';
 import FormSignIn from './form';
 
 interface SignInPageProps {
@@ -15,15 +12,8 @@ export const metadata: Metadata = {
 }
 
 
-
-const SignInPage: FC<SignInPageProps> = () => {
-
-
-
+export default function Page(props: FC<SignInPageProps>): React.ReactElement {
     return (
         <FormSignIn />
     );
-};
-
-
-export default SignInPage;
+}

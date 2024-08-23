@@ -1,7 +1,7 @@
 "use client"
 
 
-import React, { FC } from "react";
+import React from "react";
 import { ActionResult, handleSignIn } from "./action";
 import { useFormState } from "react-dom";
 import { Input } from "@/components/ui/input";
@@ -16,7 +16,7 @@ const initialFormState: ActionResult = {
     errorDesc: []
 }
 
-const FormSignIn: FC<FormSignInProps> = () => {
+function FormSignIn(props: FormSignInProps): React.ReactElement {
     const [state, formAction] = useFormState(handleSignIn, initialFormState);
 
 
@@ -36,15 +36,11 @@ const FormSignIn: FC<FormSignInProps> = () => {
                         <Input
                             type='email'
                             placeholder='email...'
-                            name='email'
-
-                        />
+                            name='email' />
                         <Input
                             type='password'
                             placeholder='password...'
-                            name='password'
-
-                        />
+                            name='password' />
                         {state.errorDesc && (
                             <div>
 
@@ -64,7 +60,7 @@ const FormSignIn: FC<FormSignInProps> = () => {
             </div>
 
         </div>
-    )
+    );
 }
 
 export default FormSignIn
