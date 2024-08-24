@@ -4,7 +4,7 @@ import "../../globals.css";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
 import { BookOpen, Plane, Ticket, User } from "lucide-react";
-import ButtonLogout from "./componets/button-logout";
+import ButtonLogout from "./components/button-logout";
 import { getUser } from "@/lib/auth";
 import { redirect } from "next/navigation";
 
@@ -24,7 +24,7 @@ export default async function DashboardLayout({
 
     if (session === null || user.role === 'CUSTOMER') {
         redirect('/dashboard/signin');
-    } 
+    }
 
 
     return (
