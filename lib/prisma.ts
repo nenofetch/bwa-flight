@@ -1,5 +1,4 @@
 import { PrismaClient } from '@prisma/client'
-import { withOptimize } from '@prisma/extension-optimize';
 
 let prisma: PrismaClient
 
@@ -8,11 +7,11 @@ declare const globalThis: {
 }
 
 
-if (process.env.NODE_ENV === 'production') {
-    prisma = new PrismaClient().$extends(withOptimize());
+if(process.env.NODE_ENV === 'production') {
+    prisma = new PrismaClient();
 } else {
-    if (!globalThis.prisma) {
-        globalThis.prisma = new PrismaClient().$extends(withOptimize());
+    if(!globalThis.prisma) {
+        globalThis.prisma = new PrismaClient();
     }
     prisma = globalThis.prisma;
 }
