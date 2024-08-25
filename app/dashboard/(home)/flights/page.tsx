@@ -6,8 +6,10 @@ export const metadata: Metadata = {
 
 export default function Page() {
   return (
-    <div>
-      Flights Page
-    </div>
+    <>
+      <div className="flex flex-row items-center justify-between">
+        <div className="my-5 text-2xl font-bold">Flights</div>
+      </div>
+    </>
   )
 }
