@@ -5,7 +5,8 @@
 // Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
 
 generator client {
-  provider = "prisma-client-js"
+  provider        = "prisma-client-js"
+  previewFeatures = ["tracing"]
 }
 
 datasource db {
@@ -32,9 +33,9 @@ enum StatusTicket {
 }
 
 model User {
-  id       String   @id @default(cuid())
+  id       String    @id @default(cuid())
   name     String
-  email    String   @unique
+  email    String    @unique
   password String
   passport String?
   role     RoleUser
@@ -47,7 +48,7 @@ model Session {
   userId    String
   expiresAt DateTime
 
-  user      User     @relation(references: [id], fields: [userId], onDelete: Cascade)
+  user User @relation(references: [id], fields: [userId], onDelete: Cascade)
 }
 
 model Airplane {
