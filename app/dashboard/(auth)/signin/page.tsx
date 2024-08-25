@@ -1,6 +1,6 @@
 
 import { Metadata } from 'next';
-import React, { FC } from 'react';
+import React, { type FC } from 'react';
 import FormSignIn from './form';
 import { getUser } from '@/lib/auth';
 import { redirect } from 'next/navigation';
