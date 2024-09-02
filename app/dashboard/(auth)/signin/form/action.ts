@@ -6,11 +6,9 @@ import prisma from "@/lib/prisma";
 import bcrypt from 'bcrypt';
 import { lucia } from "@/lib/auth";
 import { cookies } from "next/headers";
+import { ActionResult } from "@/lib/types";
 
-export interface ActionResult {
-    errorTitle: string | null
-    errorDesc: string[] | null
-}
+
 
 export async function handleSignIn(prevState: unknown, formData: FormData): Promise<ActionResult> {
 
@@ -20,7 +18,7 @@ export async function handleSignIn(prevState: unknown, formData: FormData): Prom
     });
 
 
-    if(!values.success){
+    if (!values.success) {
         const errorDesc = values.error.issues.map((issue) => issue.message)
 
         return {
@@ -37,7 +35,7 @@ export async function handleSignIn(prevState: unknown, formData: FormData): Prom
     })
 
 
-    if(!existingUser){
+    if (!existingUser) {
         return {
             errorTitle: 'Error',
             errorDesc: ['Email / Password salah!']
@@ -48,7 +46,7 @@ export async function handleSignIn(prevState: unknown, formData: FormData): Prom
     const validPassword = await bcrypt.compare(values.data.password, existingUser.password);
 
 
-    if(!validPassword){
+    if (!validPassword) {
         return {
             errorTitle: 'Error',
             errorDesc: ['Email / Password salah!']

@@ -2,14 +2,11 @@
 
 
 import React from "react";
-import { ActionResult, handleSignIn } from "./action";
+import { handleSignIn } from "./action";
 import { useFormState, useFormStatus } from "react-dom";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
-
-interface FormSignInProps {
-
-}
+import { ActionResult } from "@/lib/types";
 
 const initialFormState: ActionResult = {
     errorTitle: null,
@@ -27,7 +24,7 @@ function SubmitButton() {
     )
 }
 
-function FormSignIn(props: FormSignInProps): React.ReactElement {
+function FormSignIn(): React.ReactElement {
     const [state, formAction] = useFormState(handleSignIn, initialFormState);
 
 
