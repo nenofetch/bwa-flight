@@ -16,7 +16,7 @@ export const uploadFile = async (file: File) => {
 
 
     const { error } = await supabase.storage
-      .from("avatars")
+      .from("Image")
       .upload(`public/airplanes/${filename}`, file, {
         cacheControl: "3600",
         upsert: false
